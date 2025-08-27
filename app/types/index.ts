@@ -14,3 +14,6 @@ export interface TableProps {
   className?: string;
   onRowClick?: (row: TableRow) => void;
 }
+
+// Re-export database types
+export type { Database, Result, Player } from './database';
