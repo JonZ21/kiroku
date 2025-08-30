@@ -12,6 +12,9 @@
 
 Kiroku is a full-stack web application that provides real-time Super Smash Bros. match tracking with automated data collection. The system combines computer vision-based match detection with a modern web interface to deliver comprehensive analytics and match history.
 
+[Live Demo Site](https://kiroku-iota.vercel.app/)
+
+<video controls src="public/kiroku demo .MOV" title="Title"></video>
 ### 🔗 Related Projects
 - **[Shobu](https://github.com/JonZ21/shobu)** - Raspberry Pi-based automated match detection system that feeds data to Kiroku
 
