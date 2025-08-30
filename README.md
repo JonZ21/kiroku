@@ -23,17 +23,6 @@ Kiroku is a full-stack web application that provides real-time Super Smash Bros.
 - **Live Updates** - Real-time data synchronization using Supabase subscriptions
 - **Performance Metrics** - Win/loss records, match frequency, and trend analysis
 
-### 🎯 User Experience
-- **Responsive Design** - Mobile-first approach with Tailwind CSS
-- **Dark/Light Mode** - Theme toggle with system preference detection
-- **Fast Navigation** - Client-side routing with Next.js App Router
-- **Interactive Tables** - Sortable columns and pagination controls
-
-### ⚡ Technical Features
-- **Real-time Subscriptions** - WebSocket-like updates via Supabase
-- **Type Safety** - Full TypeScript integration with database schema
-- **Performance Optimized** - Static generation and incremental rendering
-- **Modular Architecture** - Component-based design with custom hooks
 
 ## 🏗️ Architecture
 
@@ -236,10 +225,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Supabase** for providing excellent real-time database capabilities
-- **Next.js** team for the outstanding React framework
-- **Tailwind CSS** for the utility-first CSS framework
-- **Super Smash Bros.** community for inspiration
+- **Shoutout to my friend Sam**  for inspiration
 
 ---
 
