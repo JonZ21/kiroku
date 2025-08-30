@@ -5,12 +5,29 @@
   --background: #FFEED6;
   --foreground: #2D1810;
   --primary: #FFEED6;
+  --table-bg: #FFFFFF;
+  --table-header-bg: #F8F9FA;
+  --kiroku-dark: #2B061E;
+  --kiroku-mauve: #875053;
+  --kiroku-gold: #D2BF55;
+  --kiroku-cream: #FFEED6;
+  --kiroku-pink: #FBBFCA;
+}
+
+[data-theme="dark"] {
+  --background: #2B061E;
+  --foreground: #FFEED6;
+  --primary: #2B061E;
+  --table-bg: #3D1A2B;
+  --table-header-bg: #2F1420;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-table-bg: var(--table-bg);
+  --color-table-header-bg: var(--table-header-bg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: 'Crimson Text', serif;
@@ -64,4 +81,73 @@ body {
 
 .animate-delay-400 {
   animation-delay: 0.4s;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  66% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
+
+@keyframes gradient-slow {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-gradient-slow {
+  animation: gradient-slow 6s ease-in-out infinite;
+}
+
+@keyframes gradient-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-spin {
+  background-size: 200% 200%;
+  animation: gradient-spin 3s ease infinite;
 }

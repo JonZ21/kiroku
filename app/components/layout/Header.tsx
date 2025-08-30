@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import PlayerSearch from '../ui/PlayerSearch';
+import ThemeToggle from '../ui/ThemeToggle';
 
 export default function Header() {
   const [isPlayerSearchOpen, setIsPlayerSearchOpen] = useState(false);
@@ -41,6 +42,17 @@ export default function Header() {
             >
               Matches
             </Link>
+
+            {/* Stats Link */}
+            <Link 
+              href="/stats" 
+              className="text-foreground hover:opacity-80 transition-opacity font-medium"
+            >
+              Stats
+            </Link>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </nav>
         </div>
       </div>

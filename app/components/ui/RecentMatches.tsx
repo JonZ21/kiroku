@@ -1,19 +1,32 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import Link from 'next/link';
 import Table from './Table';
 import CharacterIcon from './CharacterIcon';
 import { TableColumn, TableRow, Result } from '../../types';
 import { supabase } from '../../lib/supabase';
+import { useRealtimeSubscription } from '../../hooks/useRealtimeSubscription';
 
 export default function RecentMatches() {
   const [matches, setMatches] = useState<Result[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const fetchRecentMatchesCallback = useCallback(() => {
+    fetchRecentMatches();
+  }, []);
+
   useEffect(() => {
     fetchRecentMatches();
   }, []);
+
+  // Set up real-time subscription to the results table
+  useRealtimeSubscription({
+    table: 'results',
+    callback: fetchRecentMatchesCallback,
+    enabled: true
+  });
 
   const fetchRecentMatches = async () => {
     try {
@@ -44,7 +57,7 @@ export default function RecentMatches() {
   };
 
   const columns: TableColumn[] = [
-    { key: 'date', label: 'Date', className: 'text-gray-600' },
+    { key: 'date', label: 'Date', className: 'text-foreground/60' },
     { key: 'player', label: 'Player' },
     { key: 'opponent', label: 'Opponent' },
     { key: 'result', label: 'Result' }
@@ -90,30 +103,27 @@ export default function RecentMatches() {
   }
 
   return (
-    <section className="min-h-screen bg-white px-4 py-12">
+    <section className="min-h-screen bg-background px-4 py-12">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-800 text-center mb-12">
-          Recent Matches
-        </h2>
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-800 mx-auto"></div>
-            <p className="text-gray-600 mt-4">Loading matches...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto"></div>
+            <p className="text-foreground/70 mt-4">Loading matches...</p>
           </div>
         ) : matches.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No matches found</p>
-            <p className="text-gray-500 mt-2">Start tracking your matches to see them here!</p>
+            <p className="text-foreground/70 text-lg">No matches found</p>
+            <p className="text-foreground/50 mt-2">Start tracking your matches to see them here!</p>
           </div>
         ) : (
           <>
             <Table columns={columns} data={data} />
             
             <div className="text-center mt-8">
-              <button className="bg-gray-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors">
+              <Link href="/matches" className="inline-block bg-foreground text-background px-6 py-3 rounded-lg font-medium hover:bg-foreground/90 transition-colors">
                 View All Matches
-              </button>
+              </Link>
             </div>
           </>
         )}

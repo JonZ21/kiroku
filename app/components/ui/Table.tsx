@@ -14,10 +14,10 @@ export default function Table({ columns, data, className = "", onRowClick }: Tab
   }[columns.length] || 'grid-cols-4';
 
   return (
-    <div className={`bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transform perspective-1000 rotate-x-2 ${className}`}>
+    <div className={`bg-table-bg rounded-2xl shadow-2xl border border-foreground/20 overflow-hidden transform perspective-1000 rotate-x-2 ${className}`}>
       {/* Table Header */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-b border-gray-200">
-        <div className={`grid ${gridCols} gap-4 font-semibold text-gray-700 text-sm md:text-base`}>
+      <div className="bg-table-header-bg px-6 py-4 border-b border-foreground/20">
+        <div className={`grid ${gridCols} gap-4 font-semibold text-foreground/80 text-sm md:text-base`}>
           {columns.map((column) => (
             <div key={column.key} className={column.className || ""}>
               {column.label}
@@ -27,14 +27,14 @@ export default function Table({ columns, data, className = "", onRowClick }: Tab
       </div>
       
       {/* Table Body */}
-      <div className="divide-y divide-gray-100">
+      <div className="divide-y divide-foreground/10">
         {data.map((row, index) => (
           <div 
             key={index} 
-            className={`px-6 py-4 hover:bg-gray-50 transition-colors ${onRowClick ? 'cursor-pointer' : ''}`}
+            className={`px-6 py-4 hover:bg-table-header-bg transition-colors ${onRowClick ? 'cursor-pointer' : ''}`}
             onClick={() => onRowClick?.(row)}
           >
-            <div className={`grid ${gridCols} gap-4 text-sm md:text-base`}>
+            <div className={`grid ${gridCols} gap-4 text-sm md:text-base text-foreground`}>
               {columns.map((column) => (
                 <div key={column.key} className={column.className || ""}>
                   {row[column.key]}
